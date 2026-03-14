@@ -1,0 +1,30 @@
+name: Self learning workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: clone the code
+        run: echo "Clone from Github"
+    
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build nodejs app
+        run: echo "npm install "
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test nodejs app
+        run: echo "node --test"
+        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy nodejs app
+        run: echo "nodejs deploy"
+  
+    
