@@ -9,22 +9,26 @@ on:
   #   branches: [main]
 
 jobs:
+  #every job needs a separate runner this is known as parallelism
   code:
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
         run: echo "Code clone from Github"
   build:
+    needs: [code]
     runs-on: ubuntu-latest
     steps:
      - name: build the docker image
        run: echo "Docker run to build image"
   test:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: run tests for image build
         run: echo "Testing the container"
   deploy:
+     needs: [build,test]
      runs-on: ubuntu-latest
      steps:
        - name: Deploying the app
